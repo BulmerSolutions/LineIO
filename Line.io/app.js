@@ -1,16 +1,20 @@
 ﻿'use strict';
 var debug = require('debug');
 var express = require('express');
+var app = express();
+var http = require('http').Server(app);
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
+// var data = require('./config.json');
+var passport = require('passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
+var game = require('./routes/game');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/game', game);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
