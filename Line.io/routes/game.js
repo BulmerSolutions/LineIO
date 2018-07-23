@@ -5,10 +5,7 @@ var app = express.Router();
 // URL THINGS...
 
 app.get('/', function (req, res) {
-    res.render('index', { title: 'Game' });
+    res.render('game', { title: 'Game' });
 });
 
 module.exports = app;
-
-// GAME FUNCTIONALITY
-
